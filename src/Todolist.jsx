@@ -32,7 +32,7 @@ function Todolist() {
       <button>Add Todo</button>
       <ul>
         {todos.map((t, i) => {
-          return <Todo t={t} index={i} delTodo={deleteTodo}></Todo>;
+          return <Todo t={t} index={i} delTodo={deleteTodo} key={t}></Todo>;
         })}
       </ul>
     </div>

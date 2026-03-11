@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function Todo(props) {
+function Todo({ t, index, delTodo }) {
+  useEffect(() => {
+    console.log(t + " mounted");
+    return function () {
+      console.log(t + " unmounted");
+    };
+  }, []);
+  useEffect(() => {
+    console.log(t + "rendered");
+  });
   return (
     <li className="p-2 m-2 border rounded">
-      {props.t}
+      {t}
       <button
         onClick={() => {
-          props.delTodo(props.index);
+          delTodo(index);
         }}
       >
         Delete
@@ -15,4 +24,4 @@ function Todo(props) {
   );
 }
 
-export default Todo;
+export default React.memo(Todo);
