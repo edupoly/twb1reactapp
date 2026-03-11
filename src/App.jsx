@@ -1,5 +1,5 @@
 import Counter from "./Counter";
-import Todolist from "./Todolist";
+
 function App() {
   return (
     <div className="mybox">
@@ -7,7 +7,6 @@ function App() {
         Welcome to Enterprise Level ReactJS Application Development
       </h1>
       <Counter></Counter>
-      <Todolist></Todolist>
     </div>
   );
 }
