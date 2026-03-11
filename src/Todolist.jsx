@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function Todolist() {
   const [todos, setTodos] = React.useState([
@@ -6,10 +6,12 @@ function Todolist() {
     "pay bills",
     "clean car",
   ]);
-
+  useEffect(() => {
+    document.getElementById("d1").focus();
+  }, []);
   return (
     <div className="mybox border-info">
-      <input type="text" />
+      <input type="text" id="d1" />
       <button>Add Todo</button>
       <ul>
         {todos.map((t) => {
