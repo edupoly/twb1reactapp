@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import Todo from "./Todo";
 
 function Todolist() {
   const [todos, setTodos] = React.useState([
@@ -6,16 +7,43 @@ function Todolist() {
     "pay bills",
     "clean car",
   ]);
-  useEffect(() => {
-    document.getElementById("d1").focus();
+  const [ntd, setNtd] = React.useState("");
+
+  function handleAddTodo() {
+    setTodos([...todos, ntd]);
+  }
+  var deleteTodo = React.useCallback(function (ind) {
+    var temp = [...todos];
+    temp.splice(ind, 1);
+    setTodos([...temp]);
   }, []);
+
+  var tref = useRef();
+
+  useEffect(() => {
+    console.log(tref);
+    tref.current.focus();
+  }, []);
+
   return (
     <div className="mybox border-info">
-      <input type="text" id="d1" />
-      <button>Add Todo</button>
-      <ul>
+      <input
+        type="text"
+        onChange={(e) => {
+          setNtd(e.target.value);
+        }}
+        ref={tref}
+      />
+      <button
+        onClick={() => {
+          handleAddTodo();
+        }}
+      >
+        Add Todo
+      </button>
+      <ul className="list-unstyled p-0">
         {todos.map((t) => {
-          return <li>{t}</li>;
+          return <Todo t={t} delTodo={deleteTodo} key={t}></Todo>;
         })}
       </ul>
     </div>
