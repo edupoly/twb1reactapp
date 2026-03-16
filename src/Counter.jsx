@@ -1,30 +1,28 @@
-import React from "react";
+import React, { useReducer } from "react";
+function reducer(state, action) {
+  if (action.type == "INC") {
+    return { count: state.count + 1 };
+  }
+  if (action.type == "DEC") {
+    return { count: state.count - 1 };
+  }
+}
 function Counter() {
-  const [count, setCount] = React.useState(0);
-  function handleInc() {
-    // setCount(count + 1);
-    setCount(function (cv) {
-      return cv + 1;
-    });
-  }
-  function handleDec() {
-    setCount(function (cv) {
-      return cv - 1;
-    });
-  }
+  var [state, dispatch] = useReducer(reducer, { count: 0 });
+
   return (
     <div className="mybox border-danger">
-      <h1>Counter:{count}</h1>
+      <h1>Counter:{state.count}</h1>
       <button
         onClick={() => {
-          handleInc();
+          dispatch({ type: "INC" });
         }}
       >
         Increment
       </button>
       <button
         onClick={() => {
-          handleDec();
+          dispatch({ type: "DEC" });
         }}
       >
         Decrement
