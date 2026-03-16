@@ -12,6 +12,8 @@ function App() {
       <Link to="/products">Products ko jao</Link>
       <br />
       <Link to="/recipes">Recipes</Link>
+      <br />
+      <Link to="/users">Users</Link>
       <Outlet></Outlet>
     </div>
   );
