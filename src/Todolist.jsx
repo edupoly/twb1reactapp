@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { addTodoAction, deleteTodoAction } from "./store/actions";
 
 function Todolist(props) {
   const [ntd, setNtd] = useState("");
@@ -17,19 +18,19 @@ function Todolist(props) {
       />
       <button
         onClick={() => {
-          props.dispatch({ type: "ADDTODO", payload: ntd });
+          props.addTodoFn(ntd);
         }}
       >
         Add Todo
       </button>
       <ul>
-        {props.todoReducer.todos.map((todo, i) => {
+        {props.todos.map((todo, i) => {
           return (
             <li key={todo}>
               {todo}
               <button
                 onClick={() => {
-                  props.dispatch({ type: "DELETETODO", payload: i });
+                  props.deleteTodoFn(i);
                 }}
               >
                 Delete
@@ -41,5 +42,17 @@ function Todolist(props) {
     </div>
   );
 }
-
-export default connect((store) => store)(Todolist);
+function mapStateToProps(state) {
+  return state.todoReducer;
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    addTodoFn: (ntd) => {
+      dispatch(addTodoAction(ntd));
+    },
+    deleteTodoFn: (i) => {
+      dispatch(deleteTodoAction(i));
+    },
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Todolist);

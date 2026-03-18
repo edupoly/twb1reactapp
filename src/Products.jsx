@@ -9,7 +9,7 @@ function Products(props) {
     <div>
       <h1>Products</h1>
       <ul>
-        {props.productsReducer.products.map((pr) => {
+        {props.products.map((pr) => {
           return <li>{pr.title}</li>;
         })}
       </ul>
@@ -17,4 +17,4 @@ function Products(props) {
   );
 }
 
-export default connect((store) => store)(Products);
+export default connect((store) => store.productsReducer)(Products);

@@ -1,22 +1,24 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
+import { decAction, incAction } from "./store/actions";
 function Counter(props) {
+  console.log(props);
   useEffect(() => {
     console.log("Counter Component Rendered");
   });
   return (
     <div className="mybox">
-      <h1>Counter:{props.counterReducer.count}</h1>
+      <h1>Counter:{props.count}</h1>
       <button
         onClick={() => {
-          props.dispatch({ type: "INC" });
+          props.incFn();
         }}
       >
         Increment
       </button>
       <button
         onClick={() => {
-          props.dispatch({ type: "DEC" });
+          props.decFn();
         }}
       >
         Decrement
@@ -24,7 +26,17 @@ function Counter(props) {
     </div>
   );
 }
-
-export default connect(function (store) {
-  return store;
-})(Counter);
+function mapStateToProps(state) {
+  return state.counterReducer;
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    incFn: () => {
+      dispatch(incAction());
+    },
+    decFn: () => {
+      dispatch(decAction());
+    },
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);

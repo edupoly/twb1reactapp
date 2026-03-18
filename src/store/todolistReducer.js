@@ -1,3 +1,5 @@
+import { ADDTODO, DELETETODO } from "./constants";
+
 //state
 const initialState = {
   todos: ["goto gym", "eat bananas", "do yoga"],
@@ -5,10 +7,10 @@ const initialState = {
 
 //action
 function todoReducer(state = initialState, action) {
-  if (action.type == "ADDTODO") {
+  if (action.type == ADDTODO) {
     return { todos: [...state.todos, action.payload] };
   }
-  if (action.type == "DELETETODO") {
+  if (action.type == DELETETODO) {
     var temp = state.todos.filter((todo, i) => {
       return i != action.payload;
     });
