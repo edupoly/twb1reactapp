@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 function Products(props) {
-  console.log(props);
+  useEffect(() => {
+    console.log("Products Component Rendered");
+  });
   return (
     <div>
       <h1>Products</h1>

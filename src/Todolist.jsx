@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 
 function Todolist(props) {
   const [ntd, setNtd] = useState("");
+  useEffect(() => {
+    console.log("Todolist Component Rendered");
+  });
   return (
     <div className="mybox">
       <h1>Todolist</h1>

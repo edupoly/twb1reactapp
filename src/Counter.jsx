@@ -1,6 +1,9 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
 function Counter(props) {
-  console.log(props);
+  useEffect(() => {
+    console.log("Counter Component Rendered");
+  });
   return (
     <div className="mybox">
       <h1>Counter:{props.counterReducer.count}</h1>
