@@ -1,5 +1,6 @@
-import Counter from "./Counter";
-import Todolist from "./Todolist";
+import Counter from "./features/counter/Counter";
+import Todolist from "./features/todolist/Todolist";
+import Likesdislikes from "./features/likesdislikes/Likesdislikes";
 function App() {
   return (
     <div className="mybox">
@@ -8,6 +9,7 @@ function App() {
       </h1>
       <Counter></Counter>
       <Todolist></Todolist>
+      <Likesdislikes></Likesdislikes>
     </div>
   );
 }
