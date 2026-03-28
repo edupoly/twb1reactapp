@@ -1,15 +1,17 @@
 import Counter from "./features/counter/Counter";
 import Todolist from "./features/todolist/Todolist";
 import Likesdislikes from "./features/likesdislikes/Likesdislikes";
+import Products from "./features/products/Products";
+import { Outlet } from "react-router-dom";
+import Navbar from "./component/Navbar";
 function App() {
   return (
     <div className="mybox">
       <h1 className="bg-dark text-info">
         Welcome to Enterprise Level ReactJS Application Development
       </h1>
-      <Counter></Counter>
-      <Todolist></Todolist>
-      <Likesdislikes></Likesdislikes>
+      <Navbar></Navbar>
+      <Outlet></Outlet>
     </div>
   );
 }
