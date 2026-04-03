@@ -6,6 +6,7 @@ import { productsApi } from "../services/productsAPI";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { recipesApi } from "../services/recipesAPI";
 import { todosApi } from "../services/todosAPI";
+import { authApi } from "../services/auth";
 export const store = configureStore({
   reducer: {
     counterReducer,
@@ -14,12 +15,14 @@ export const store = configureStore({
     [productsApi.reducerPath]: productsApi.reducer,
     [recipesApi.reducerPath]: recipesApi.reducer,
     [todosApi.reducerPath]: todosApi.reducer,
+    [authApi.reducerPath]: authApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       productsApi.middleware,
       recipesApi.middleware,
       todosApi.middleware,
+      authApi.middleware,
     ),
 });
 setupListeners(store.dispatch);

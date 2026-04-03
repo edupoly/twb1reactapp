@@ -11,6 +11,8 @@ import Products from "./features/products/Products.jsx";
 import Recipes from "./features/recipes/Recipes.jsx";
 import RecipeDetails from "./features/recipes/RecipeDetails.jsx";
 import Mytodos from "./features/mytodos/Mytodos.jsx";
+import Signup from "./component/Signup.jsx";
+import Login from "./component/Login.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
       {
         path: "/mytodos",
         element: <Mytodos />,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signup",
+        element: <Signup></Signup>,
       },
     ],
   },

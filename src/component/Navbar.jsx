@@ -20,6 +20,16 @@ function Navbar() {
         <li>
           <Link to="/mytodos">Mytodos</Link>
         </li>
+        <li>
+          <Link to="/login" className="btn btn-primary">
+            Login
+          </Link>
+        </li>
+        <li>
+          <Link to="/signup" className="btn btn-secondary">
+            Signup
+          </Link>
+        </li>
       </ul>
     </div>
   );
