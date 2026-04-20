@@ -13,6 +13,8 @@ import RecipeDetails from "./features/recipes/RecipeDetails.jsx";
 import Mytodos from "./features/mytodos/Mytodos.jsx";
 import Signup from "./component/Signup.jsx";
 import Login from "./component/Login.jsx";
+import Movies from "./features/movies/Movies.jsx";
+import Tasklist from "./features/tasklist/Tasklist.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,8 +29,16 @@ const router = createBrowserRouter([
         element: <Todolist></Todolist>,
       },
       {
+        path: "/movies",
+        element: <Movies></Movies>,
+      },
+      {
         path: "/products",
         element: <Products></Products>,
+      },
+      {
+        path: "/tasklist",
+        element: <Tasklist></Tasklist>,
       },
       {
         path: "/recipes",

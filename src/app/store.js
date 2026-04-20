@@ -7,15 +7,19 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { recipesApi } from "../services/recipesAPI";
 import { todosApi } from "../services/todosAPI";
 import { authApi } from "../services/auth";
+import { moviesApi } from "../services/moviesAPI";
+import userReducer from "../component/userSlice";
 export const store = configureStore({
   reducer: {
     counterReducer,
     todolistReducer,
     likedislikeReducer,
+    userReducer,
     [productsApi.reducerPath]: productsApi.reducer,
     [recipesApi.reducerPath]: recipesApi.reducer,
     [todosApi.reducerPath]: todosApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    [moviesApi.reducerPath]: moviesApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
@@ -23,6 +27,7 @@ export const store = configureStore({
       recipesApi.middleware,
       todosApi.middleware,
       authApi.middleware,
+      moviesApi.middleware,
     ),
 });
 setupListeners(store.dispatch);
