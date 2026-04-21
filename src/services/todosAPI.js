@@ -4,22 +4,35 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Define a service using a base URL and expected endpoints
 export const todosApi = createApi({
   reducerPath: "todosApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3600/todos" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3600/" }),
+
   endpoints: (builder) => ({
     getAllTodos: builder.query({
-      query: () => `/`,
+      query: () => {
+        console.log("hi get all todos");
+        return {
+          url: "/todos",
+          method: "GET",
+          headers: {
+            token: window.localStorage.getItem("token"),
+          },
+        };
+      },
     }),
     addTodoItem: builder.mutation({
       query: (todo) => ({
-        url: "/",
+        url: "/todos",
         method: "POST",
-        body: todo,
+        headers: {
+          token: window.localStorage.getItem("token"),
+        },
+        body: { todo },
       }),
     }),
     deleteTodoItem: builder.mutation({
       query: (id) => {
         return {
-          url: `/${id}`,
+          url: `/todos/${id}`,
           method: "DELETE",
         };
       },

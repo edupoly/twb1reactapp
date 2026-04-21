@@ -1,15 +1,21 @@
-import Counter from "./features/counter/Counter";
-import Todolist from "./features/todolist/Todolist";
-import Likesdislikes from "./features/likesdislikes/Likesdislikes";
-import Products from "./features/products/Products";
 import { Outlet } from "react-router-dom";
 import Navbar from "./component/Navbar";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { updateUser } from "./component/userSlice";
 function App() {
+  var dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(
+      updateUser({
+        username: window.localStorage.getItem("username"),
+        token: window.localStorage.getItem("token"),
+      }),
+    );
+  }, []);
   return (
     <div className="mybox">
-      <h1 className="bg-dark text-info">
-        Welcome to Enterprise Level ReactJS Application Development
-      </h1>
+      <h1 className="bg-dark text-info"></h1>
       <Navbar></Navbar>
       <Outlet></Outlet>
     </div>

@@ -19,6 +19,7 @@ function Login() {
         console.log(res);
         dispatch(updateUser(res.data));
         window.localStorage.setItem("token", res.data.token);
+        window.localStorage.setItem("username", res.data.username);
         navigate("/");
       });
     },
