@@ -24,6 +24,9 @@ function Navbar() {
               <Link to="/tasklist">Tasklist</Link>
             </li>
             <li>
+              <Link to="/photos">Photos</Link>
+            </li>
+            <li>
               <button
                 onClick={() => {
                   logout();

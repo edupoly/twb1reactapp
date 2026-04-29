@@ -15,11 +15,16 @@ import Signup from "./component/Signup.jsx";
 import Login from "./component/Login.jsx";
 import Movies from "./features/movies/Movies.jsx";
 import Tasklist from "./features/tasklist/Tasklist.jsx";
+import Photos from "./features/photos/Phots.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
     children: [
+      {
+        path: "/photos",
+        element: <Photos></Photos>,
+      },
       {
         path: "/counter",
         element: <Counter></Counter>,
